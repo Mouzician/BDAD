@@ -1,5 +1,6 @@
 -- Criar tabelas
 
+--USEI NVCHAR2 em vez de CHAR pelos exemplos que vi, mas nao sei
 
 
 CREATE TABLE TipoDeServico (
@@ -80,10 +81,30 @@ CREATE TABLE ClasseClientes(
 );
 
 
-
-
 CREATE TABLE Clientes(
 	idClientes NUMBER PRIMARY KEY,
 	tipoContrato NVARCHAR2(20) NOT NULL,
 	profissao NVARCHAR2(20)
+);
+
+
+CREATE TABLE Horario(
+	idHorario NUMBER PRIMARY KEY
+	--horario
+);
+
+CREATE TABLE EspecialidadeF(
+	idEspecialidadeF NUMBER PRIMARY KEY,
+	nome NVARCHAR2(20) NOT NULL,
+	renumeracao INTEGER
+);
+
+
+
+CREATE TABLE Funcionarios(
+	idFuncionarios NUMBER PRIMARY KEY,
+	area NVARCHAR2(20) NOT NULL,
+	-- Como ponho para ter varias especialidades?
+	idEspecialidadeF NUMBER REFERENCES EspecialidadeF(idEspecialidadeF)
+
 );
