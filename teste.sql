@@ -79,13 +79,15 @@ CREATE TABLE Pessoas(
 );
 
 CREATE TABLE ClasseClientes(
-	idPessoa NUMBER PRIMARY KEY,
+	idClasseClientes NUMBER PRIMARY KEY,
 	desconto INTEGER,
 );
 
 
 CREATE TABLE Clientes(
-	idPessoa NUMBER PRIMARY KEY,
+	idPessoa NUMBER REFERENCES Pessoas(idPessoa),
+	idClientes NUMBER PRIMARY KEY,
+	idClasseClientes NUMBER REFERENCES ClasseClientes(idClasseClientes),
 	tipoContrato NVARCHAR2(20) NOT NULL,
 	profissao NVARCHAR2(20)
 );
@@ -105,6 +107,7 @@ CREATE TABLE EspecialidadeF(
 
 
 CREATE TABLE Funcionarios(
+	idPessoa NUMBER REFERENCES Pessoas(idPessoa),
 	idFuncionarios NUMBER PRIMARY KEY,
 	area NVARCHAR2(20) NOT NULL,
 	-- Como ponho para ter varias especialidades?
