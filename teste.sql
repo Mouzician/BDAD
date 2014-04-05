@@ -6,14 +6,14 @@
 CREATE TABLE TipoDeServico (
 	idTipoDeServico NUMBER PRIMARY KEY,
 	nome NVARCHAR2(20) NOT NULL,
-	frequencia NVARCHAR2(20) NOT NULL,
+	frequencia NVARCHAR2(20) NOT NULL
 );
 
 
 CREATE TABLE Linha(
 	idLinha INTEGER PRIMARY KEY AUTOINCREMENT,
 	duracao NUMBER CHECK (duracao > 0),
-	distancia NUMBER CHECK (distancia > 0),
+	distancia NUMBER CHECK (distancia > 0)
 );
 
 
@@ -31,8 +31,8 @@ CREATE TABLE ComboioMercadoria (
 	modelo NVARCHAR2(20) NOT NULL,
 	combustivel NVARCHAR2(20) NOT NULL,
 	velocidade INTEGER,
-	peso INTEGER
-	cargaMAX NUMBER CHECK(cargaMAX > 0),
+	peso INTEGER,
+	cargaMAX NUMBER CHECK(cargaMAX > 0)
 );
 
 CREATE TABLE ComboioPassageiros (
@@ -40,20 +40,20 @@ CREATE TABLE ComboioPassageiros (
 	modelo NVARCHAR2(20) NOT NULL,
 	combustivel NVARCHAR2(20) NOT NULL,
 	velocidade INTEGER,
-	peso INTEGER
+	peso INTEGER,
 	lotacao INTEGER,
-	idTipoDeServico NUMBER REFERENCES TipoDeServico(idTipoDeServico),
+	idTipoDeServico NUMBER REFERENCES TipoDeServico(idTipoDeServico)
 );
 
 CREATE TABLE ComboioPassageirosLinha(
 	idComboioPassageiros INTEGER REFERENCES ComboioPassageiros(idComboioPassageiros),
 	idLinha INTEGER REFERENCES Linha(idLinha),
-	PRIMARY KEY (idComboioPassageiros, idLinha),
+	PRIMARY KEY (idComboioPassageiros, idLinha)
 );
 
 CREATE TABLE ComboioMercadoriaLinha(
 	idComboioMercadoria INTEGER REFERENCES ComboioMercadoria(idComboioMercadoria),
-	idLinha INTEGER REFERENCES Linha(idLinha),
+	idLinha INTEGER REFERENCES Linha(idLinha)
 );
 
 CREATE TABLE Carruagem(
@@ -61,7 +61,7 @@ CREATE TABLE Carruagem(
 	idComboioMercadoria INTEGER REFERENCES ComboioMercadoria(idComboioMercadoria),
     capacidade NUMBER CHECK (capacidade > 0),
 	tipoProdutos NVARCHAR2(20) NOT NULL,
-	custo NUMBER CHECK (custo > 0),
+	custo NUMBER CHECK (custo > 0)
 );
 
 
@@ -69,34 +69,34 @@ CREATE TABLE Empresa(
 	idEmpresa NUMBER PRIMARY KEY,
 	nrContrato NUMBER,
 	tipoMercadorias NVARCHAR2(20) NOT NULL,
-	nome NVARCHAR2(20) NOT NULL,
+	nome NVARCHAR2(20) NOT NULL
 );
 
 CREATE TABLE Aluguer(
 	idEmpresa NUMBER REFERENCES Empresa(idEmpresa),
 	idCarruagem NUMBER REFERENCES Carruagem(idCarruagem),
 	custo NUMBER,
-	PRIMARY KEY (idEmpresa, idCarruagem),
+	PRIMARY KEY (idEmpresa, idCarruagem)
 );
 
 CREATE TABLE TipoEstacao(
 	idTipoEstacao NUMBER PRIMARY KEY,
 	nome NVARCHAR2(20) NOT NULL
-	recursos NVARCHAR2(40),
+	recursos NVARCHAR2(40)
 );
 
 
 CREATE TABLE Estacao(
 	idEstacao NUMBER PRIMARY KEY AUTOINCREMENT,
 	idTipoEstacao NUMBER REFERENCES TipoEstacao(idTipoEstacao),
-	localidade NVARCHAR2(20) NOT NULL,
+	localidade NVARCHAR2(20) NOT NULL
 );
 
 CREATE TABLE Paragens(
 	idLinha INTEGER REFERENCES Linha(idLinha),
 	ordem NUMBER,
 	idEstacao NUMBER REFERENCES Estacao(idEstacao),
-	PRIMARY KEY (idLinha, ordem),
+	PRIMARY KEY (idLinha, ordem)
 );
 
 --Cria-se pessoa e direcionase pelo id da pessoa ou nao se cria Pessoa e poe-se os elementos em clientes e funcionarios?
@@ -109,7 +109,7 @@ CREATE TABLE Paragens(
 
 CREATE TABLE Classe(
 	idClasse NUMBER PRIMARY KEY,
-	nome NVARCHAR2(20),
+	nome NVARCHAR2(20)
 );
 
 CREATE TABLE Clientes(
@@ -119,14 +119,14 @@ CREATE TABLE Clientes(
 	idade NUMBER NOT NULL,
 	tipoContrato NVARCHAR2(20) NOT NULL,
 	profissao NVARCHAR2(20),
-	idLinha INTEGER REFERENCES Linha(idLinha),
+	idLinha INTEGER REFERENCES Linha(idLinha)
 );
 
 CREATE TABLE ClasseClientes(
 	idClasse NUMBER REFERENCES Classe(idClasse),
 	idClientes NUMBER REFERENCES Clientes(idClientes),
 	desconto INTEGER,
-	PRIMARY KEY (idClasse, idClientes),
+	PRIMARY KEY (idClasse, idClientes)
 ); 
 
 
@@ -153,5 +153,5 @@ CREATE TABLE TipoTrabalho(
 	idFuncionarios NUMBER REFERENCES Funcionarios(idFuncionarios),
 	idEspecialidade NUMBER REFERENCES Especialidade(idEspecialidade),
 	tipoTrabalho NVARCHAR2(20),
-	PRIMARY KEY (idFuncionarios, idEspecialidade),
+	PRIMARY KEY (idFuncionarios, idEspecialidade)
 );
