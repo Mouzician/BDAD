@@ -71,18 +71,21 @@ CREATE TABLE Estacao(
 
 
 --Cria-se pessoa e direcionase pelo id da pessoa ou nao se cria Pessoa e poe-se os elementos em clientes e funcionarios?
-
-
+CREATE TABLE Pessoas(
+	idPessoa NUMBER PRIMARY KEY,
+	nome NVARCHAR2(20) NOT NULL,
+	morada NVARCHAR2(20) NOT NULL,
+	idade NUMBER NOT NULL,
+);
 
 CREATE TABLE ClasseClientes(
-	idClasseClientes NUMBER PRIMARY KEY,
-	nome NVARCHAR2(20) NOT NULL,
+	idPessoa NUMBER PRIMARY KEY,
 	desconto INTEGER,
 );
 
 
 CREATE TABLE Clientes(
-	idClientes NUMBER PRIMARY KEY,
+	idPessoa NUMBER PRIMARY KEY,
 	tipoContrato NVARCHAR2(20) NOT NULL,
 	profissao NVARCHAR2(20)
 );
