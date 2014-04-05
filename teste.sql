@@ -5,98 +5,129 @@
 
 CREATE TABLE TipoDeServico (
 	idTipoDeServico NUMBER PRIMARY KEY,
-	frequencia NVARCHAR2(20) NOT NULL
+	nome NVARCHAR2(20) NOT NULL,
+	frequencia NVARCHAR2(20) NOT NULL,
 );
 
 
-CREATE TABLE Linhas(
-	idLinhas INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE Linha(
+	idLinha INTEGER PRIMARY KEY AUTOINCREMENT,
 	duracao NUMBER CHECK (duracao > 0),
-	distancia NUMBER CHECK (distancia > 0)
+	distancia NUMBER CHECK (distancia > 0),
 );
 
 
-CREATE TABLE Comboio(
+/*CREATE TABLE Comboio(
 	idComboio INTEGER PRIMARY KEY AUTOINCREMENT,
 	modelo NVARCHAR2(20) NOT NULL,
 	combustivel NVARCHAR2(20) NOT NULL,
 	velocidade INTEGER,
 	peso INTEGER
-);
-
-
+);*/
 
 
 CREATE TABLE ComboioMercadoria (
-	idComboio INTEGER REFERENCES Comboio(idComboio),
-	idComboioM INTEGER PRIMARY KEY AUTOINCREMENT,
+	idComboioMercadoria INTEGER PRIMARY KEY,
+	modelo NVARCHAR2(20) NOT NULL,
+	combustivel NVARCHAR2(20) NOT NULL,
+	velocidade INTEGER,
+	peso INTEGER
 	cargaMAX NUMBER CHECK(cargaMAX > 0),
-	idLinhas INTEGER REFERENCES Linhas(idLinhas)
 );
 
 CREATE TABLE ComboioPassageiros (
-	idComboio INTEGER REFERENCES Comboio(idComboio),
-	idComboioP INTEGER PRIMARY KEY AUTOINCREMENT,
+	idComboioPassageiros INTEGER PRIMARY KEY,
+	modelo NVARCHAR2(20) NOT NULL,
+	combustivel NVARCHAR2(20) NOT NULL,
+	velocidade INTEGER,
+	peso INTEGER
 	lotacao INTEGER,
 	idTipoDeServico NUMBER REFERENCES TipoDeServico(idTipoDeServico),
-	idLinhas INTEGER REFERENCES Linhas(idLinhas)
 );
 
+CREATE TABLE ComboioPassageirosLinha(
+	idComboioPassageiros INTEGER REFERENCES ComboioPassageiros(idComboioPassageiros),
+	idLinha INTEGER REFERENCES Linha(idLinha),
+	PRIMARY KEY (idComboioPassageiros, idLinha),
+);
+
+CREATE TABLE ComboioMercadoriaLinha(
+	idComboioMercadoria INTEGER REFERENCES ComboioMercadoria(idComboioMercadoria),
+	idLinha INTEGER REFERENCES Linha(idLinha),
+);
 
 CREATE TABLE Carruagem(
 	idCarruagem NUMBER PRIMARY KEY,
-	idComboioP INTEGER REFERENCES ComboioPassageiros(idComboioP),
+	idComboioMercadoria INTEGER REFERENCES ComboioMercadoria(idComboioMercadoria),
     capacidade NUMBER CHECK (capacidade > 0),
 	tipoProdutos NVARCHAR2(20) NOT NULL,
-	custo NUMBER CHECK (custo > 0)
+	custo NUMBER CHECK (custo > 0),
 );
 
 
 CREATE TABLE Empresa(
 	idEmpresa NUMBER PRIMARY KEY,
-	idCarruagem NUMBER REFERENCES Carruagem(idCarruagem),
+	nrContrato NUMBER,
 	tipoMercadorias NVARCHAR2(20) NOT NULL,
-	nome NVARCHAR2(20) NOT NULL
+	nome NVARCHAR2(20) NOT NULL,
 );
 
+CREATE TABLE Aluguer(
+	idEmpresa NUMBER REFERENCES Empresa(idEmpresa),
+	idCarruagem NUMBER REFERENCES Carruagem(idCarruagem),
+	custo NUMBER,
+	PRIMARY KEY (idEmpresa, idCarruagem),
+);
 
 CREATE TABLE TipoEstacao(
 	idTipoEstacao NUMBER PRIMARY KEY,
 	nome NVARCHAR2(20) NOT NULL
-	-- recursos?
+	recursos NVARCHAR2(40),
 );
 
 
 CREATE TABLE Estacao(
 	idEstacao NUMBER PRIMARY KEY AUTOINCREMENT,
 	idTipoEstacao NUMBER REFERENCES TipoEstacao(idTipoEstacao),
-	idLinhas INTEGER REFERENCES Linhas(idLinhas),
-	localidade NVARCHAR2(20) NOT NULL
+	localidade NVARCHAR2(20) NOT NULL,
 );
 
-
+CREATE TABLE Paragens(
+	idLinha INTEGER REFERENCES Linha(idLinha),
+	ordem NUMBER,
+	idEstacao NUMBER REFERENCES Estacao(idEstacao),
+	PRIMARY KEY (idLinha, ordem),
+);
 
 --Cria-se pessoa e direcionase pelo id da pessoa ou nao se cria Pessoa e poe-se os elementos em clientes e funcionarios?
-CREATE TABLE Pessoas(
+/*CREATE TABLE Pessoas(
 	idPessoa NUMBER PRIMARY KEY,
 	nome NVARCHAR2(20) NOT NULL,
 	morada NVARCHAR2(20) NOT NULL,
 	idade NUMBER NOT NULL,
+);*/
+
+CREATE TABLE Classe(
+	idClasse NUMBER PRIMARY KEY,
+	nome NVARCHAR2(20),
+);
+
+CREATE TABLE Clientes(
+	idClientes NUMBER PRIMARY KEY,
+	nome NVARCHAR2(20) NOT NULL,
+	morada NVARCHAR2(20) NOT NULL,
+	idade NUMBER NOT NULL,
+	tipoContrato NVARCHAR2(20) NOT NULL,
+	profissao NVARCHAR2(20),
+	idLinha INTEGER REFERENCES Linha(idLinha),
 );
 
 CREATE TABLE ClasseClientes(
-	idClasseClientes NUMBER PRIMARY KEY,
+	idClasse NUMBER REFERENCES Classe(idClasse),
+	idClientes NUMBER REFERENCES Clientes(idClientes),
 	desconto INTEGER,
-);
-
-
-CREATE TABLE Clientes(
-	idPessoa NUMBER REFERENCES Pessoas(idPessoa),
-	idClientes NUMBER PRIMARY KEY,
-	idClasseClientes NUMBER REFERENCES ClasseClientes(idClasseClientes),
-	tipoContrato NVARCHAR2(20) NOT NULL,
-	profissao NVARCHAR2(20)
-);
+	PRIMARY KEY (idClasse, idClientes),
+); 
 
 
 CREATE TABLE Horario(
@@ -104,19 +135,23 @@ CREATE TABLE Horario(
 	--horario
 );
 
-CREATE TABLE EspecialidadeF(
-	idEspecialidadeF NUMBER PRIMARY KEY,
+CREATE TABLE Especialidade(
+	idEspecialidade NUMBER PRIMARY KEY,
 	nome NVARCHAR2(20) NOT NULL,
 	renumeracao INTEGER
 );
-
-
 
 CREATE TABLE Funcionarios(
 	idPessoa NUMBER REFERENCES Pessoas(idPessoa),
 	idFuncionarios NUMBER PRIMARY KEY,
 	area NVARCHAR2(20) NOT NULL,
-	-- Como ponho para ter varias especialidades?
-	idEspecialidadeF NUMBER REFERENCES EspecialidadeF(idEspecialidadeF)
+	idEspecialidade NUMBER REFERENCES Especialidade(idEspecialidade)
 
+);
+
+CREATE TABLE TipoTrabalho(
+	idFuncionarios NUMBER REFERENCES Funcionarios(idFuncionarios),
+	idEspecialidade NUMBER REFERENCES Especialidade(idEspecialidade),
+	tipoTrabalho NVARCHAR2(20),
+	PRIMARY KEY (idFuncionarios, idEspecialidade),
 );
