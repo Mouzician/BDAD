@@ -142,7 +142,10 @@ CREATE TABLE Especialidade(
 );
 
 CREATE TABLE Funcionarios(
-	idPessoa NUMBER REFERENCES Pessoas(idPessoa),
+	--idPessoa NUMBER REFERENCES Pessoas(idPessoa),
+	nome NVARCHAR2(20) NOT NULL,
+	morada NVARCHAR2(20) NOT NULL,
+	idade NUMBER NOT NULL,
 	idFuncionarios NUMBER PRIMARY KEY,
 	area NVARCHAR2(20) NOT NULL,
 	idEspecialidade NUMBER REFERENCES Especialidade(idEspecialidade)
