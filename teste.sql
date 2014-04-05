@@ -15,25 +15,31 @@ CREATE TABLE Linhas(
 	distancia NUMBER CHECK (distancia > 0)
 );
 
+
+CREATE TABLE Comboio(
+	idComboio INTEGER PRIMARY KEY AUTOINCREMENT,
+	modelo NVARCHAR2(20) NOT NULL,
+	combustivel NVARCHAR2(20) NOT NULL,
+	velocidade INTEGER,
+	peso INTEGER
+);
+
+
+
+
 CREATE TABLE ComboioMercadoria (
-idComboioM INTEGER PRIMARY KEY AUTOINCREMENT,
-modelo NVARCHAR2(20) NOT NULL,
-combustivel NVARCHAR2(20) NOT NULL,
-velocidade INTEGER,
-peso INTEGER,
-cargaMAX NUMBER CHECK(cargaMAX > 0),
-idLinhas INTEGER REFERENCES Linhas(idLinhas)
+	idComboio INTEGER REFERENCES Comboio(idComboio),
+	idComboioM INTEGER PRIMARY KEY AUTOINCREMENT,
+	cargaMAX NUMBER CHECK(cargaMAX > 0),
+	idLinhas INTEGER REFERENCES Linhas(idLinhas)
 );
 
 CREATE TABLE ComboioPassageiros (
-idComboioP INTEGER PRIMARY KEY AUTOINCREMENT,
-modelo NVARCHAR2(20) NOT NULL,
-combustivel NVARCHAR2(20) NOT NULL,
-velocidade INTEGER ,
-peso INTEGER,
-lotacao INTEGER,
-idTipoDeServico NUMBER REFERENCES TipoDeServico(idTipoDeServico),
-idLinhas INTEGER REFERENCES Linhas(idLinhas)
+	idComboio INTEGER REFERENCES Comboio(idComboio),
+	idComboioP INTEGER PRIMARY KEY AUTOINCREMENT,
+	lotacao INTEGER,
+	idTipoDeServico NUMBER REFERENCES TipoDeServico(idTipoDeServico),
+	idLinhas INTEGER REFERENCES Linhas(idLinhas)
 );
 
 
