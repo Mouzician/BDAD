@@ -1,0 +1,35 @@
+-- Criar tabelas
+
+CREATE TABLE ComboioMercadoria (
+idComboioM INTEGER PRIMARY KEY AUTOINCREMENT,
+modelo NVARCHAR2(20) NOT NULL,
+combustivel NVARCHAR2(20) NOT NULL,
+velocidade INTEGER PRIMARY KEY,
+peso INTEGER PRIMARY KEY,
+cargaMAX INTEGER PRIMARY KEY
+);
+
+
+CREATE TABLE TipoDeServico (
+	idTipoDeServico NUMBER PRIMARY KEY,
+	frequencia NVARCHAR2(20) NOT NULL,
+);
+
+
+
+CREATE TABLE ComboioPassageiros (
+idComboioP INTEGER PRIMARY KEY AUTOINCREMENT,
+modelo NVARCHAR2(20) NOT NULL,
+combustivel NVARCHAR2(20) NOT NULL,
+velocidade INTEGER PRIMARY KEY,
+peso INTEGER PRIMARY KEY,
+lotacao INTEGER PRIMARY KEY,
+idTipoDeServico NUMBER REFERENCES TipoDeServico(idTipoDeServico)
+);
+
+
+CREAT TABLE Linhas(
+	idLinhas INTEGER PRIMARY KEY AUTOINCREMENT,
+	duracao NUMBER CHECK (duracao > 0),
+	duracao NUMBER CHECK (duracao > 0)
+);
