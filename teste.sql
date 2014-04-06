@@ -59,7 +59,7 @@ CREATE TABLE ComboioMercadoriaLinha(
 CREATE TABLE Carruagem(
 	idCarruagem NUMBER PRIMARY KEY,
 	idComboioMercadoria INTEGER REFERENCES ComboioMercadoria(idComboioMercadoria),
-    	capacidade NUMBER CHECK (capacidade > 0),
+    capacidade NUMBER CHECK (capacidade > 0),
 	tipoProdutos NVARCHAR2(20) NOT NULL,
 	custo NUMBER CHECK (custo > 0)
 );
