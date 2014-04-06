@@ -100,12 +100,12 @@ INSERT INTO TipoEstacao (idTipoEstacao, nome, recursos)
         
 -- Inserts na tabela Estacao
 
-INSERT INTO Estacao (idEstacao, idTipoEstacao, localidade)
-        VALUES (1, 2, 'Nine');
-INSERT INTO Estacao (idEstacao, idTipoEstacao, localidade)
-        VALUES (2, 2, 'Porto Sao Bento');
-INSERT INTO Estacao (idEstacao, idTipoEstacao, localidade)
-        VALUES (3, 1, 'Terronhas');
+INSERT INTO Estacao (idTipoEstacao, localidade)
+        VALUES (2, 'Nine');
+INSERT INTO Estacao (idTipoEstacao, localidade)
+        VALUES (2, 'Porto Sao Bento');
+INSERT INTO Estacao (idTipoEstacao, localidade)
+        VALUES (1, 'Terronhas');
         
 -- Inserts na tabela Paragens
 
