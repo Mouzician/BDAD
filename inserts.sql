@@ -115,6 +115,24 @@ INSERT INTO Paragens (idLinha, ordem, idEstacao)
         VALUES (2, 1, 2);
 INSERT INTO Paragens (idLinha, ordem, idEstacao)
         VALUES (3, 11, 3);
+        
+-- Inserts na tabela Pessoas
+/*
+INSERT INTO Pessoas (idPessoa, nome, morada, idade)
+        VALUES (1, 'Carolina Filipa da Silva Torres e Corte-Real', 'Avenida de Cima, 123', 25);
+INSERT INTO Pessoas (idPessoa, nome, morada, idade)
+        VALUES (2, 'Maria Gertrudes Gomes Teixeira', 'Avenida de Baixo, 321', 67);
+INSERT INTO Pessoas (idPessoa, nome, morada, idade)
+        VALUES (3, 'Julio Paulo da Sousa Ferreira', 'Rua D. Manuel III, 45', 54);
+*/
 
+-- Inserts na tabela Classe
 
+INSERT INTO Classe (idClasse, nome)
+        VALUES (1, 'Sub-23');
+INSERT INTO Classe (idClasse, nome)
+        VALUES (2, 'Crianca';
+INSERT INTO Classe (idClasse, nome)
+        VALUES (3, 'Idoso');
+        
 ----------------- STAND BY ----------------------
