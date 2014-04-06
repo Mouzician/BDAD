@@ -3,7 +3,7 @@
 
 -- Inserts na tabela TipoDeServico
 
-INSERT INTO TipoDeServico (idTipoDeServico, , nome, frequencia)
+INSERT INTO TipoDeServico (idTipoDeServico, nome, frequencia)
         VALUES (1, 'Alfa Pendular', 'Ocasional');
 INSERT INTO TipoDeServico (idTipoDeServico, nome, frequencia)
         VALUES (2, 'Intercidades', 'Fim de Semana');
@@ -57,11 +57,11 @@ INSERT INTO ComboioPassageirosLinha (idComboioPassageiros, idLinha)
         
 -- Inserts na tabela ComboioMercadoriaLinha
 
-INSERT INTO ComboioMercadoriaLinha (idComboioPassageiros, idLinha)
+INSERT INTO ComboioMercadoriaLinha (idComboioMercadoria, idLinha)
         VALUES (1, 1);
-INSERT INTO ComboioMercadoriaLinha (idComboioPassageiros, idLinha)
+INSERT INTO ComboioMercadoriaLinha (idComboioMercadoria, idLinha)
         VALUES (2, 2);
-INSERT INTO ComboioMercadoriaLinha (idComboioPassageiros, idLinha)
+INSERT INTO ComboioMercadoriaLinha (idComboioMercadoria, idLinha)
         VALUES (3, 3);
 
 -- Inserts na tabela Carruagem
@@ -78,9 +78,9 @@ INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, tipoProduto
 INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, nome)
         VALUES (1, 23145, 'Metilamina', 'GreyMatter');
 INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, nome)
-        VALUES (2, 2, 4000, 'Madeira', 'GreenPeace');
+        VALUES (2, 4000, 'Madeira', 'GreenPeace');
 INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, nome)
-        VALUES (3, 3, 3500, 'Ferro', 'Microsoft');
+        VALUES (3, 3500, 'Ferro', 'Microsoft');
 
 -- Inserts na tabela Aluguer
 
@@ -131,7 +131,7 @@ INSERT INTO Pessoas (idPessoa, nome, morada, idade)
 INSERT INTO Classe (idClasse, nome)
         VALUES (1, 'Sub-23');
 INSERT INTO Classe (idClasse, nome)
-        VALUES (2, 'Crianca';
+        VALUES (2, 'Crianca');
 INSERT INTO Classe (idClasse, nome)
         VALUES (3, 'Idoso');
         
