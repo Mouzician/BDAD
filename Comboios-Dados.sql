@@ -14,9 +14,9 @@ INSERT INTO TipoDeServico (idTipoDeServico, nome, frequencia)
 
 INSERT INTO Linha (duracao, distancia) 
         VALUES (50, 40);
-INSERT INTO Linha (idLinha, duracao, distancia) 
+INSERT INTO Linha (duracao, distancia) 
         VALUES (45, 34);
-INSERT INTO Linha (idLinha, duracao, distancia)
+INSERT INTO Linha (duracao, distancia)
         VALUES (42, 30);
 
 -- Inserts na tabela Comboio
