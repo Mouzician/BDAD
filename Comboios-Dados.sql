@@ -12,57 +12,57 @@ INSERT INTO TipoDeServico (idTipoDeServico, nome, frequencia)
 
 -- Inserts na tabela Linha
 
-INSERT INTO Linha (duracao, distancia) 
-        VALUES (50, 40);
-INSERT INTO Linha (duracao, distancia) 
-        VALUES (45, 34);
-INSERT INTO Linha (duracao, distancia)
-        VALUES (42, 30);
+INSERT INTO Linha (nome, duracao, distancia) 
+        VALUES ("Caide", 50, 40);
+INSERT INTO Linha (nome, duracao, distancia) 
+        VALUES ("Braga", 45, 34);
+INSERT INTO Linha (nome, duracao, distancia) 
+        VALUES ("Aveiro", 42, 30);
 
 -- Inserts na tabela Comboio
-/*
-INSERT INTO Comboio (idComboio, modelo, combustivel, velocidade, peso) 
-        VALUES (1, 'CP-9000', 'Diesel-hidrostatico', 95, 15000);
-INSERT INTO Comboio (idComboio, modelo, combustivel, velocidade, peso) 
-        VALUES (2, 'MZ41P', 'Vapor', 110, 18000);
-INSERT INTO Comboio (idComboio, modelo, combustivel, velocidade, peso)
-        VALUES (3, 'FAMAS', 'Gas turbina-eletrico', 105, 20000);
-*/
+
+INSERT INTO Comboio (modelo, combustivel, velocidade, peso) 
+        VALUES ('CP-9000', 'Diesel-hidrostatico', 95, 15000);
+INSERT INTO Comboio (modelo, combustivel, velocidade, peso) 
+        VALUES ('MZ41P', 'Vapor', 110, 18000);
+INSERT INTO Comboio (modelo, combustivel, velocidade, peso)
+        VALUES ('FAMAS', 'Gas turbina-eletrico', 105, 20000);
+
 -- Inserts na tabela ComboioMercadoria
 
-INSERT INTO ComboioMercadoria (idComboioMercadoria, modelo, combustivel, velocidade, peso, cargaMAX) 
-        VALUES (1, 'CP-9000', 'Diesel-hidrostatico', 65, 18000, 35000);
-INSERT INTO ComboioMercadoria (idComboioMercadoria, modelo, combustivel, velocidade, peso, cargaMAX) 
-        VALUES (2, 'MZ41P', 'Vapor', 75, 21000, 40000);
-INSERT INTO ComboioMercadoria (idComboioMercadoria, modelo, combustivel, velocidade, peso, cargaMAX)
-        VALUES (3, 'FAMAS', 'Gas turbina-eletrico', 70, 23000, 38000);
+INSERT INTO ComboioMercadoria (idComboioMercadoria, cargaMAX) 
+        VALUES (1, 35000);
+INSERT INTO ComboioMercadoria (idComboioMercadoria, cargaMAX) 
+        VALUES (2, 40000);
+INSERT INTO ComboioMercadoria (idComboioMercadoria, cargaMAX) 
+        VALUES (3, 38000);
 
 -- Inserts na tabela ComboioPassageiros
 
-INSERT INTO ComboioPassageiros (idComboioPassageiros, modelo, combustivel, velocidade, peso, lotacao, idTipoDeServico)
-        VALUES (1, 'PagaOQueDeves', 'Vapor', 95, 15000, 550, 1);
-INSERT INTO ComboioPassageiros (idComboioPassageiros, modelo, combustivel, velocidade, peso, lotacao, idTipoDeServico)
-        VALUES (2, 'C3P3', 'Gas turbina-eletrico', 110, 18000, 660, 2);
-INSERT INTO ComboioPassageiros (idComboioPassageiros, modelo, combustivel, velocidade, peso, lotacao, idTipoDeServico)
-        VALUES (3, 'P40', 'Diesel-hidrostatico', 105, 20000, 624, 3);
+INSERT INTO ComboioPassageiros (idComboioPassageiros, lotacao, idTipoDeServico)
+        VALUES (1, 550, 1);
+INSERT INTO ComboioPassageiros (idComboioPassageiros, lotacao, idTipoDeServico)
+        VALUES (2, 660, 2);
+INSERT INTO ComboioPassageiros (idComboioPassageiros, lotacao, idTipoDeServico)
+        VALUES (3, 624, 3);
         
 -- Inserts na tabela ComboioPassageirosLinha
 
 INSERT INTO ComboioPassageirosLinha (idComboioPassageiros, idLinha)
-        VALUES (1, 1);
+        VALUES (1, 2);
 INSERT INTO ComboioPassageirosLinha (idComboioPassageiros, idLinha)
         VALUES (2, 2);
 INSERT INTO ComboioPassageirosLinha (idComboioPassageiros, idLinha)
-        VALUES (3, 3);
+        VALUES (3, 1);
         
 -- Inserts na tabela ComboioMercadoriaLinha
 
 INSERT INTO ComboioMercadoriaLinha (idComboioMercadoria, idLinha)
-        VALUES (1, 1);
+        VALUES (1, 3);
 INSERT INTO ComboioMercadoriaLinha (idComboioMercadoria, idLinha)
         VALUES (2, 2);
 INSERT INTO ComboioMercadoriaLinha (idComboioMercadoria, idLinha)
-        VALUES (3, 3);
+        VALUES (3, 1);
 
 -- Inserts na tabela Carruagem
 
@@ -103,28 +103,28 @@ INSERT INTO TipoEstacao (idTipoEstacao, nome, recursos)
 INSERT INTO Estacao (idTipoEstacao, localidade)
         VALUES (2, 'Nine');
 INSERT INTO Estacao (idTipoEstacao, localidade)
-        VALUES (2, 'Porto Sao Bento');
+        VALUES (3, 'Porto Sao Bento');
 INSERT INTO Estacao (idTipoEstacao, localidade)
         VALUES (1, 'Terronhas');
         
 -- Inserts na tabela Paragens
 
-INSERT INTO Paragens (idLinha, ordem, idEstacao)
-        VALUES (1, 19, 1);
-INSERT INTO Paragens (idLinha, ordem, idEstacao)
-        VALUES (2, 1, 2);
-INSERT INTO Paragens (idLinha, ordem, idEstacao)
-        VALUES (3, 11, 3);
+INSERT INTO Paragens (ordem, idEstacao)
+        VALUES (19, 1);
+INSERT INTO Paragens (ordem, idEstacao)
+        VALUES (1, 2);
+INSERT INTO Paragens (ordem, idEstacao)
+        VALUES (11, 3);
         
 -- Inserts na tabela Pessoas
-/*
+
 INSERT INTO Pessoas (idPessoa, nome, morada, idade)
         VALUES (1, 'Carolina Filipa da Silva Torres e Corte-Real', 'Avenida de Cima, 123', 25);
 INSERT INTO Pessoas (idPessoa, nome, morada, idade)
         VALUES (2, 'Maria Gertrudes Gomes Teixeira', 'Avenida de Baixo, 321', 67);
 INSERT INTO Pessoas (idPessoa, nome, morada, idade)
         VALUES (3, 'Julio Paulo da Sousa Ferreira', 'Rua D. Manuel III, 45', 54);
-*/
+
 -- Inserts na tabela Classe
 
 INSERT INTO Classe (idClasse, nome)
@@ -136,12 +136,12 @@ INSERT INTO Classe (idClasse, nome)
         
 -- Inserts na tabela Clientes
 
-INSERT INTO Clientes (idClientes, nome, morada, idade, tipoContrato, profissao)
-        VALUES (1, 'Carolina Filipa da Silva Torres e Corte-Real', 'Avenida de Cima, 123', 21, 'Estudante Sub-23', 'Estudante');
-INSERT INTO Clientes (idClientes, nome, morada, idade, tipoContrato, profissao)
-        VALUES (2, 'Maria Gertrudes Gomes Teixeira', 'Avenida de Baixo, 321', 76, 'Nenhum', 'Reformado');
-INSERT INTO Clientes (idClientes, nome, morada, idade, tipoContrato, profissao)
-        VALUES (3, 'Julio Paulo da Sousa Ferreira', 'Rua D. Manuel III, 45', 3, 'Nenhum', 'Sem profissao');
+INSERT INTO Clientes (idClientes, tipoContrato, profissao)
+        VALUES (1, 'Estudante Sub-23', 'Estudante');
+INSERT INTO Clientes (idClientes, tipoContrato, profissao)
+        VALUES (2, 'Passe Social', 'Reformado');
+INSERT INTO Clientes (idClientes, tipoContrato, profissao)
+        VALUES (3, 'Passe Mensal', 'Sem profissao');
         
 -- Inserts na tabela ClasseClientes
 
@@ -172,12 +172,12 @@ INSERT INTO Especialidade (idEspecialidade, nome, renumeracao)
         
 -- Inserts na tabela Funcionarios
 
-INSERT INTO Funcionarios (nome, morada, idade, idFuncionarios, area)
-        VALUES ('José Mauro Sousa Miranda', 'Rua da Pilantragem, 123', 54, 1, 'Porto');
-INSERT INTO Funcionarios (nome, morada, idade, idFuncionarios, area)
-        VALUES ('Carla Maria dos Santos Castro', 'Rua dos Vagabundos, 666', 47, 2, 'Paredes');
-INSERT INTO Funcionarios (nome, morada, idade, idFuncionarios, area)
-        VALUES ('Jorge Macaco Almeida Girafa', 'Alameda dos Tolitos, 69', 35, 3, 'Esposende');
+INSERT INTO Funcionarios (idFuncionarios, area)
+        VALUES (1, 'Porto');
+INSERT INTO Funcionarios (idFuncionarios, area)
+        VALUES (2, 'Paredes');
+INSERT INTO Funcionarios (idFuncionarios, area)
+        VALUES (3, 'Esposende');
         
 -- Inserts na tabela TipoTrabalho
 

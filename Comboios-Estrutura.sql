@@ -58,7 +58,6 @@ CREATE TABLE Carruagem(
 	tipoProdutos NVARCHAR2(20) NOT NULL
 );
 
-
 CREATE TABLE Empresa(
 	idEmpresa NUMBER PRIMARY KEY,
 	nrContrato NUMBER,
