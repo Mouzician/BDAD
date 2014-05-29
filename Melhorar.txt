@@ -1,13 +1,13 @@
 Modelo relacional: 
 - Generalizações mal mapeadas: 
-	na relação Comboio falta o atributo que discrimina o tipo de comboio. 
+	DONE -- na relação Comboio falta o atributo que discrimina o tipo de comboio. 
 	Para além disso, o idPassageiros e idMercadorias deverão ser simultaneamente chaves primárias nas respectivas relações e chaves externas para a relação Comboio. 
-	O mesmo problema na generalização Pessoa. 
-	- Na tabela Classe o idClasse é chave primária mas não é chave externa. 
+	DONE -- O mesmo problema na generalização Pessoa. 
+	DONE? -- Na tabela Classe o idClasse é chave primária mas não é chave externa. 
 CREATE TABLES: 
-- Discrepância entre as restrições definidas no UML (nenhumas) e as definidas nos CREATE TABLE (muitos NOT NULL e muitos CHECKS). 
+(ASK) -- Discrepância entre as restrições definidas no UML (nenhumas) e as definidas nos CREATE TABLE (muitos NOT NULL e muitos CHECKS). 
 - ComboioMercadoria e ComboioPassageiros não estão em conformidade com o modelo relacional ... 
 - Mapeamento da generalização Pessoa também está desconforme o modelo relacional. 
-- Falta definir a chave primária na tabela ComboioMercadoriaLinha. 
-- O atributo custo está a mais na tabela Carruagem. 
-- O atributo idEspecialidade está a mais na tabela Funcionários.
+DONE -- Falta definir a chave primária na tabela ComboioMercadoriaLinha. 
+DONE -- O atributo custo está a mais na tabela Carruagem. 
+DONE -- O atributo idEspecialidade está a mais na tabela Funcionários.

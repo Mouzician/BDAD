@@ -1,7 +1,7 @@
-DROP TABLE Aluno CASCADE CONSTRAINTS;
-DROP TABLE Prof CASCADE CONSTRAINTS;
-DROP TABLE Cadeira CASCADE CONSTRAINTS;
-DROP TABLE Prova CASCADE CONSTRAINTS;
+DROP TABLE Aluno;
+DROP TABLE Prof;
+DROP TABLE Cadeira;
+DROP TABLE Prova;
 
 CREATE TABLE aluno
 (	nr	varchar2(5)	 not null,
@@ -22,9 +22,9 @@ CREATE TABLE prof
  	CONSTRAINT prof_pk PRIMARY KEY (sigla)
 );
 
-INSERT INTO prof VALUES ('ECO','Eug�nio');
+INSERT INTO prof VALUES ('ECO','Eugenio');
 INSERT INTO prof VALUES ('FNF','Fernando');
-INSERT INTO prof VALUES ('JLS','Jo�o');
+INSERT INTO prof VALUES ('JLS','Joao');
 
 CREATE TABLE cadeira
 (	cod	varchar2(5)	not null,

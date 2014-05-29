@@ -53,15 +53,15 @@ CREATE TABLE ComboioPassageirosLinha(
 
 CREATE TABLE ComboioMercadoriaLinha(
 	idComboioMercadoria INTEGER REFERENCES ComboioMercadoria(idComboioMercadoria),
-	idLinha INTEGER REFERENCES Linha(idLinha)
+	idLinha INTEGER REFERENCES Linha(idLinha),
+	PRIMARY KEY (idComboioMercadoria, idLinha)
 );
 
 CREATE TABLE Carruagem(
 	idCarruagem NUMBER PRIMARY KEY,
 	idComboioMercadoria INTEGER REFERENCES ComboioMercadoria(idComboioMercadoria),
     capacidade NUMBER CHECK (capacidade > 0),
-	tipoProdutos NVARCHAR2(20) NOT NULL,
-	custo NUMBER CHECK (custo > 0)
+	tipoProdutos NVARCHAR2(20) NOT NULL
 );
 
 
@@ -147,9 +147,7 @@ CREATE TABLE Funcionarios(
 	morada NVARCHAR2(20) NOT NULL,
 	idade NUMBER NOT NULL,
 	idFuncionarios NUMBER PRIMARY KEY,
-	area NVARCHAR2(20) NOT NULL,
-	idEspecialidade NUMBER REFERENCES Especialidade(idEspecialidade)
-
+	area NVARCHAR2(20) NOT NULL
 );
 
 CREATE TABLE TipoTrabalho(
