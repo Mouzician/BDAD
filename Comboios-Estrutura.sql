@@ -11,6 +11,7 @@ CREATE TABLE TipoDeServico (
 
 
 CREATE TABLE Linha(
+	nome NVARCHAR2(20) NOT NULL,
 	idLinha INTEGER PRIMARY KEY AUTOINCREMENT,
 	duracao NUMBER CHECK (duracao > 0),
 	distancia NUMBER CHECK (distancia > 0)
