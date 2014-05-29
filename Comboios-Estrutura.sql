@@ -102,7 +102,7 @@ CREATE TABLE Pessoas(
 	idPessoa NUMBER PRIMARY KEY,
 	nome NVARCHAR2(20) NOT NULL,
 	morada NVARCHAR2(20) NOT NULL,
-	idade NUMBER NOT NULL,
+	idade NUMBER NOT NULL
 );
 
 CREATE TABLE Classe(
@@ -141,7 +141,7 @@ CREATE TABLE Especialidade(
 CREATE TABLE Funcionarios(
 	idFuncionarios NUMBER PRIMARY KEY,
 	area NVARCHAR2(20) NOT NULL,
-	FOREIGN KEY(idClientes) REFERENCES Pessoas(idPessoa)
+	FOREIGN KEY(idFuncionarios) REFERENCES Pessoas(idPessoa)
 		ON DELETE SET NULL
 		ON UPDATE CASCADE
 );
