@@ -1,6 +1,6 @@
-SELECT nome FROM Carruagem
-WHERE idCarruagem NOT IN
-(SELECT idCarruagem FROM Aluguer);
+SELECT nome FROM Empresa
+WHERE idEmpresa NOT IN
+(SELECT idEmpresa FROM Aluguer);
 
 SELECT nome COUNT(*) FROM Carruagem
 GROUP BY nrContrato;
