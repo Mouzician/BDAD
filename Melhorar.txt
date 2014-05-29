@@ -3,7 +3,7 @@ Modelo relacional:
 	DONE -- na relação Comboio falta o atributo que discrimina o tipo de comboio. 
 	Para além disso, o idPassageiros e idMercadorias deverão ser simultaneamente chaves primárias nas respectivas relações e chaves externas para a relação Comboio. 
 	DONE -- O mesmo problema na generalização Pessoa. 
-	DONE? -- Na tabela Classe o idClasse é chave primária mas não é chave externa. 
+	DONE -- Na tabela Classe o idClasse é chave primária mas não é chave externa. 
 CREATE TABLES: 
 (ASK) -- Discrepância entre as restrições definidas no UML (nenhumas) e as definidas nos CREATE TABLE (muitos NOT NULL e muitos CHECKS). 
 - ComboioMercadoria e ComboioPassageiros não estão em conformidade com o modelo relacional ... 
