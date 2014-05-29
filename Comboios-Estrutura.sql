@@ -1,8 +1,3 @@
--- Criar tabelas
-
---USEI NVCHAR2 em vez de CHAR pelos exemplos que vi, mas nao sei
-
-
 CREATE TABLE TipoDeServico (
 	idTipoDeServico NUMBER PRIMARY KEY,
 	nome NVARCHAR2(20) NOT NULL,
