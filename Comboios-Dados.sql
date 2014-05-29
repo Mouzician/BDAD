@@ -66,12 +66,12 @@ INSERT INTO ComboioMercadoriaLinha (idComboioMercadoria, idLinha)
 
 -- Inserts na tabela Carruagem
 
-INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, tipoProdutos, custo)
-        VALUES (1, 1, 4500, 'Madeira', 400);
-INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, tipoProdutos, custo)
-        VALUES (2, 2, 4000, 'Ferro', 650);
-INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, tipoProdutos, custo)
-        VALUES (3, 3, 3500, 'Metilamina', 1000);
+INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, tipoProdutos)
+        VALUES (1, 1, 4500, 'Madeira');
+INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, tipoProdutos)
+        VALUES (2, 2, 4000, 'Ferro');
+INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, tipoProdutos)
+        VALUES (3, 3, 3500, 'Metilamina');
 
 -- Inserts na tabela Empresa
 
@@ -172,12 +172,12 @@ INSERT INTO Especialidade (idEspecialidade, nome, renumeracao)
         
 -- Inserts na tabela Funcionarios
 
-INSERT INTO Funcionarios (nome, morada, idade, idFuncionarios, area, idEspecialidade)
-        VALUES ('José Mauro Sousa Miranda', 'Rua da Pilantragem, 123', 54, 1, 'Porto', 1);
-INSERT INTO Funcionarios (nome, morada, idade, idFuncionarios, area, idEspecialidade)
-        VALUES ('Carla Maria dos Santos Castro', 'Rua dos Vagabundos, 666', 47, 2, 'Paredes', 2);
-INSERT INTO Funcionarios (nome, morada, idade, idFuncionarios, area, idEspecialidade)
-        VALUES ('Jorge Macaco Almeida Girafa', 'Alameda dos Tolitos, 69', 35, 3, 'Esposende', 3);
+INSERT INTO Funcionarios (nome, morada, idade, idFuncionarios, area)
+        VALUES ('José Mauro Sousa Miranda', 'Rua da Pilantragem, 123', 54, 1, 'Porto');
+INSERT INTO Funcionarios (nome, morada, idade, idFuncionarios, area)
+        VALUES ('Carla Maria dos Santos Castro', 'Rua dos Vagabundos, 666', 47, 2, 'Paredes');
+INSERT INTO Funcionarios (nome, morada, idade, idFuncionarios, area)
+        VALUES ('Jorge Macaco Almeida Girafa', 'Alameda dos Tolitos, 69', 35, 3, 'Esposende');
         
 -- Inserts na tabela TipoTrabalho
 
