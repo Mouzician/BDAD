@@ -18,32 +18,30 @@ CREATE TABLE Linha(
 );
 
 
-/*CREATE TABLE Comboio(
+CREATE TABLE Comboio(
 	idComboio INTEGER PRIMARY KEY AUTOINCREMENT,
 	modelo NVARCHAR2(20) NOT NULL,
 	combustivel NVARCHAR2(20) NOT NULL,
 	velocidade INTEGER,
 	peso INTEGER
-);*/
+);
 
 
 CREATE TABLE ComboioMercadoria (
 	idComboioMercadoria INTEGER PRIMARY KEY,
-	modelo NVARCHAR2(20) NOT NULL,
-	combustivel NVARCHAR2(20) NOT NULL,
-	velocidade INTEGER,
-	peso INTEGER,
-	cargaMAX NUMBER CHECK(cargaMAX > 0)
+	cargaMAX NUMBER CHECK(cargaMAX > 0),
+	FOREIGN KEY(idComboioMercadoria) REFERENCES Comboio(idComboio)
+		ON DELETE SET NULL
+		ON UPDATE CASCADE
 );
 
 CREATE TABLE ComboioPassageiros (
 	idComboioPassageiros INTEGER PRIMARY KEY,
-	modelo NVARCHAR2(20) NOT NULL,
-	combustivel NVARCHAR2(20) NOT NULL,
-	velocidade INTEGER,
-	peso INTEGER,
 	lotacao INTEGER,
-	idTipoDeServico NUMBER REFERENCES TipoDeServico(idTipoDeServico)
+	idTipoDeServico NUMBER REFERENCES TipoDeServico(idTipoDeServico),
+	FOREIGN KEY(idComboioPassageiros) REFERENCES Comboio(idComboio)
+		ON DELETE SET NULL
+		ON UPDATE CASCADE
 );
 
 CREATE TABLE ComboioPassageirosLinha(
@@ -100,13 +98,12 @@ CREATE TABLE Paragens(
 	PRIMARY KEY (idLinha, ordem)
 );
 
---Cria-se pessoa e direcionase pelo id da pessoa ou nao se cria Pessoa e poe-se os elementos em clientes e funcionarios?
-/*CREATE TABLE Pessoas(
+CREATE TABLE Pessoas(
 	idPessoa NUMBER PRIMARY KEY,
 	nome NVARCHAR2(20) NOT NULL,
 	morada NVARCHAR2(20) NOT NULL,
 	idade NUMBER NOT NULL,
-);*/
+);
 
 CREATE TABLE Classe(
 	idClasse NUMBER PRIMARY KEY,
@@ -115,12 +112,12 @@ CREATE TABLE Classe(
 
 CREATE TABLE Clientes(
 	idClientes NUMBER PRIMARY KEY,
-	nome NVARCHAR2(20) NOT NULL,
-	morada NVARCHAR2(20) NOT NULL,
-	idade NUMBER NOT NULL,
 	tipoContrato NVARCHAR2(20) NOT NULL,
 	profissao NVARCHAR2(20),
-	idLinha INTEGER REFERENCES Linha(idLinha)
+	idLinha INTEGER REFERENCES Linha(idLinha),
+	FOREIGN KEY(idClientes) REFERENCES Pessoas(idPessoa)
+		ON DELETE SET NULL
+		ON UPDATE CASCADE
 );
 
 CREATE TABLE ClasseClientes(
@@ -133,7 +130,6 @@ CREATE TABLE ClasseClientes(
 
 CREATE TABLE Horario(
 	idHorario NUMBER PRIMARY KEY
-	--horario
 );
 
 CREATE TABLE Especialidade(
@@ -143,12 +139,11 @@ CREATE TABLE Especialidade(
 );
 
 CREATE TABLE Funcionarios(
-	--idPessoa NUMBER REFERENCES Pessoas(idPessoa),
-	nome NVARCHAR2(20) NOT NULL,
-	morada NVARCHAR2(20) NOT NULL,
-	idade NUMBER NOT NULL,
 	idFuncionarios NUMBER PRIMARY KEY,
-	area NVARCHAR2(20) NOT NULL
+	area NVARCHAR2(20) NOT NULL,
+	FOREIGN KEY(idClientes) REFERENCES Pessoas(idPessoa)
+		ON DELETE SET NULL
+		ON UPDATE CASCADE
 );
 
 CREATE TABLE TipoTrabalho(
