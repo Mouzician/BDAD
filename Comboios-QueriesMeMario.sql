@@ -23,12 +23,5 @@ SELECT localidade FROM Estacao, TipoEstacao
 WHERE Estacao.idTipoEstacao = TipoEstacao.idTipoEstacao
 AND recursos LIKE '%Venda';
 
-CREATE TRIGGER CALCULOCUSTO
-AFTER INSERT
-ON Aluguer
-FOR EACH ROW
-WHEN(New.custo isNULL)
-BEGIN
-UPDATE Aluguer SET
-custo = ((SELECT escalao FROM Empresa WHERE idEmpresa = New.idEmpresa) * New.carga);
-END;
+SELECT custo FROM Aluguer
+WHERE idEmpresa = 1;

@@ -149,3 +149,13 @@ CREATE TABLE TipoTrabalho(
 	tipoTrabalho NVARCHAR2(20),
 	PRIMARY KEY (idFuncionarios, idEspecialidade)
 );
+
+CREATE TRIGGER CALCULOCUSTO
+AFTER INSERT
+ON Aluguer
+FOR EACH ROW
+WHEN(New.custo isNULL)
+BEGIN
+UPDATE Aluguer SET
+custo = ((SELECT escalao FROM Empresa WHERE idEmpresa = New.idEmpresa) * New.carga);
+END;

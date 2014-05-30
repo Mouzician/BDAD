@@ -85,7 +85,7 @@ INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, escalao, nome)
 -- Inserts na tabela Aluguer
 
 INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, custo)
-        VALUES (1, 3, 35, 1000);
+        VALUES (1, 3, 35, NULL);
 INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, custo)
         VALUES (2, 1, 200, 400);
 INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, custo)
