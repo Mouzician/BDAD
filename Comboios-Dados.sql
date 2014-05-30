@@ -66,30 +66,30 @@ INSERT INTO ComboioMercadoriaLinha (idComboioMercadoria, idLinha)
 
 -- Inserts na tabela Carruagem
 
-INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, tipoProdutos)
-        VALUES (1, 1, 4500, 'Madeira');
-INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, tipoProdutos)
-        VALUES (2, 2, 4000, 'Ferro');
-INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, tipoProdutos)
-        VALUES (3, 3, 3500, 'Metilamina');
+INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, cargaActual, tipoProdutos)
+        VALUES (1, 1, 4500, 3200, 'Madeira');
+INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, cargaActual, tipoProdutos)
+        VALUES (2, 2, 4000, 4000, 'Ferro');
+INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, cargaActual, tipoProdutos)
+        VALUES (3, 3, 3500, 0, 'Metilamina');
 
 -- Inserts na tabela Empresa
 
-INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, nome)
-        VALUES (1, 23145, 'Metilamina', 'GreyMatter');
-INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, nome)
-        VALUES (2, 4000, 'Madeira', 'GreenPeace');
-INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, nome)
-        VALUES (3, 3500, 'Ferro', 'Microsoft');
+INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, escalao, nome)
+        VALUES (1, 23145, 'Metilamina', 3, 'GreyMatter');
+INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, escalao, nome)
+        VALUES (2, 4000, 'Madeira', 4, 'GreenPeace');
+INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, escalao, nome)
+        VALUES (3, 3500, 'Ferro', 2, 'Microsoft');
 
 -- Inserts na tabela Aluguer
 
-INSERT INTO Aluguer (idEmpresa, idCarruagem, custo)
-        VALUES (1, 3, 1000);
-INSERT INTO Aluguer (idEmpresa, idCarruagem, custo)
-        VALUES (2, 1, 400);
-INSERT INTO Aluguer (idEmpresa, idCarruagem, custo)
-        VALUES (3, 2, 650);
+INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, custo)
+        VALUES (1, 3, 35, 1000);
+INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, custo)
+        VALUES (2, 1, 200, 400);
+INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, custo)
+        VALUES (3, 2, 300, 650);
 
 -- Inserts na tabela TipoEstacao
 

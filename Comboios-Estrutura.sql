@@ -55,6 +55,7 @@ CREATE TABLE Carruagem(
 	idCarruagem NUMBER PRIMARY KEY,
 	idComboioMercadoria INTEGER REFERENCES ComboioMercadoria(idComboioMercadoria),
     capacidade NUMBER CHECK (capacidade > 0),
+    cargaActual NUMBER CHECK (capacidade > 0),
 	tipoProdutos NVARCHAR2(20) NOT NULL
 );
 
@@ -62,12 +63,14 @@ CREATE TABLE Empresa(
 	idEmpresa NUMBER PRIMARY KEY,
 	nrContrato NUMBER,
 	tipoMercadorias NVARCHAR2(20) NOT NULL,
+	escalao NUMBER,
 	nome NVARCHAR2(20) NOT NULL
 );
 
 CREATE TABLE Aluguer(
 	idEmpresa NUMBER REFERENCES Empresa(idEmpresa),
 	idCarruagem NUMBER REFERENCES Carruagem(idCarruagem),
+	carga NUMBER,
 	custo NUMBER,
 	PRIMARY KEY (idEmpresa, idCarruagem)
 );
