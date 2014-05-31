@@ -16,6 +16,12 @@ FROM TipoDeServico, ComboioPassageiros
 WHERE TipoDeServico.idTipoDeServico = ComboioPassageiros.idTipoDeServico
 GROUP BY TipoDeServico.nome;
 
+--Qual o nome dos clientes com um desconto acima da média
+SELECT nome
+FROM Pessoas, Clientes, ClasseClientes
+WHERE Pessoas.idPessoa = Clientes.idClientes 
+AND Clientes.idClientes = ClasseClientes.idClientes
+AND ClasseClientes.desconto >(SELECT AVG(Desconto) FROM ClasseClientes);
 
 SELECT idCarruagem FROM Carruagem
 WHERE cargaActual = 0
