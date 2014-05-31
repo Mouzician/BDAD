@@ -84,12 +84,14 @@ INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, escalao, nome)
 
 -- Inserts na tabela Aluguer
 
-INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, custo)
-        VALUES (1, 3, 35, NULL);
-INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, custo)
-        VALUES (2, 1, 200, 400);
-INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, custo)
-        VALUES (3, 2, 300, 650);
+INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, volume, custo, data)
+        VALUES (1, 3, 35, 77, NULL, '2013-06-12');
+INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, volume, custo, data)
+        VALUES (2, 1, 200, 100, NULL, '2013-06-12');
+INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, volume, custo, data)
+        VALUES (3, 2, 300, 500, NULL, '2014-05-25');
+INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, volume, custo, data)
+        VALUES (1, 2, 35, 77, NULL, '2013-06-12');
 
 -- Inserts na tabela TipoEstacao
 
@@ -119,9 +121,9 @@ INSERT INTO Paragens (ordem, idEstacao)
 -- Inserts na tabela Pessoas
 
 INSERT INTO Pessoas (idPessoa, nome, morada, idade)
-        VALUES (1, 'Carolina Filipa da Silva Torres e Corte-Real', 'Avenida de Cima, 123', 25);
+        VALUES (1, 'Carolina Filipa da Silva Torres e Corte-Real', 'Porto', 25);
 INSERT INTO Pessoas (idPessoa, nome, morada, idade)
-        VALUES (2, 'Maria Gertrudes Gomes Teixeira', 'Avenida de Baixo, 321', 67);
+        VALUES (2, 'Maria Gertrudes Gomes Teixeira', 'Paredes', 67);
 INSERT INTO Pessoas (idPessoa, nome, morada, idade)
         VALUES (3, 'Julio Paulo da Sousa Ferreira', 'Rua D. Manuel III, 45', 54);
 
@@ -163,12 +165,12 @@ INSERT INTO Horario (idHorario)
         
 -- Inserts na tabela Especialidade
 
-INSERT INTO Especialidade (idEspecialidade, nome, renumeracao)
-        VALUES (1, 'Maquinista', 1086);
-INSERT INTO Especialidade (idEspecialidade, nome, renumeracao)
-        VALUES (2, 'Operador de revisao e venda', 755);
-INSERT INTO Especialidade (idEspecialidade, nome, renumeracao)
-        VALUES (3, 'Assistente Comercial', 870);
+INSERT INTO Especialidade (idEspecialidade, nome)
+        VALUES (1, 'Maquinista');
+INSERT INTO Especialidade (idEspecialidade, nome)
+        VALUES (2, 'Operador de revisao e venda');
+INSERT INTO Especialidade (idEspecialidade, nome)
+        VALUES (3, 'Assistente Comercial');
         
 -- Inserts na tabela Funcionarios
 
@@ -181,11 +183,11 @@ INSERT INTO Funcionarios (idFuncionarios, area)
         
 -- Inserts na tabela TipoTrabalho
 
-INSERT INTO TipoTrabalho (idFuncionarios, idEspecialidade, tipoTrabalho)
-        VALUES (1, 1, 'Ocasional');
-INSERT INTO TipoTrabalho (idFuncionarios, idEspecialidade, tipoTrabalho)
-        VALUES (2, 2, 'Tempo inteiro');
-INSERT INTO TipoTrabalho (idFuncionarios, idEspecialidade, tipoTrabalho)
-        VALUES (3, 3, 'Temporario');   
+INSERT INTO Contrato (idFuncionarios, idEspecialidade, tipoTrabalho, remuneracao)
+        VALUES (1, 1, 'Ocasional', 670);
+INSERT INTO Contrato (idFuncionarios, idEspecialidade, tipoTrabalho, remuneracao)
+        VALUES (2, 2, 'Tempo inteiro', 890);
+INSERT INTO Contrato (idFuncionarios, idEspecialidade, tipoTrabalho, remuneracao)
+        VALUES (3, 3, 'Temporario', 3240);   
         
 -------------------- DONE ----------------------

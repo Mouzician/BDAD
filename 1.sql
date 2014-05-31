@@ -55,7 +55,7 @@ CREATE TABLE Carruagem(
 	idCarruagem NUMBER PRIMARY KEY,
 	idComboioMercadoria INTEGER REFERENCES ComboioMercadoria(idComboioMercadoria),
     capacidade NUMBER CHECK (capacidade > 0),
-    cargaActual NUMBER CHECK (capacidade > 0),
+    cargaActual NUMBER,
 	tipoProdutos NVARCHAR2(20) NOT NULL
 );
 
@@ -71,7 +71,9 @@ CREATE TABLE Aluguer(
 	idEmpresa NUMBER REFERENCES Empresa(idEmpresa),
 	idCarruagem NUMBER REFERENCES Carruagem(idCarruagem),
 	carga NUMBER,
+	volume NUMBER,
 	custo NUMBER,
+	data DATE,
 	PRIMARY KEY (idEmpresa, idCarruagem)
 );
 
@@ -131,8 +133,7 @@ CREATE TABLE Horario(
 
 CREATE TABLE Especialidade(
 	idEspecialidade NUMBER PRIMARY KEY,
-	nome NVARCHAR2(20) NOT NULL,
-	renumeracao INTEGER
+	nome NVARCHAR2(20) NOT NULL
 );
 
 CREATE TABLE Funcionarios(
@@ -143,13 +144,15 @@ CREATE TABLE Funcionarios(
 		ON UPDATE CASCADE
 );
 
-CREATE TABLE TipoTrabalho(
+CREATE TABLE Contrato(
 	idFuncionarios NUMBER REFERENCES Funcionarios(idFuncionarios),
 	idEspecialidade NUMBER REFERENCES Especialidade(idEspecialidade),
 	tipoTrabalho NVARCHAR2(20),
+	remuneracao INTEGER,
 	PRIMARY KEY (idFuncionarios, idEspecialidade)
 );
 
+--Trigger calcula o dado custo da tabela aluguer automaticamente, atraves dos dados carga, volume e escalao das tabelas empresa e aluguer
 CREATE TRIGGER CALCULOCUSTO
 AFTER INSERT
 ON Aluguer
@@ -157,5 +160,16 @@ FOR EACH ROW
 WHEN(New.custo isNULL)
 BEGIN
 UPDATE Aluguer SET
-custo = ((SELECT escalao FROM Empresa WHERE idEmpresa = New.idEmpresa) * New.carga);
+custo = ((SELECT escalao FROM Empresa WHERE idEmpresa = New.idEmpresa) * (New.carga + New.volume));
+END;
+
+--Adiciona o subsidio de refeicao a funcionarios que nao trabalhem na sua area de residencia
+CREATE TRIGGER SUBSIDIOREFEICAO
+AFTER INSERT
+ON Contrato
+FOR EACH ROW
+BEGIN
+UPDATE Contrato SET
+remuneracao = remuneracao + 100
+WHERE((SELECT morada FROM Funcionarios, Pessoas WHERE idFuncionarios = New.idFuncionarios AND idFuncionarios = idPessoa) != (SELECT area FROM Funcionarios WHERE idFuncionarios = New.idFuncionarios));
 END;
