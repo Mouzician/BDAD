@@ -18,7 +18,8 @@ CREATE TABLE Comboio(
 	modelo NVARCHAR2(20) NOT NULL,
 	combustivel NVARCHAR2(20) NOT NULL,
 	velocidade INTEGER,
-	peso INTEGER
+	peso INTEGER,
+	tipoComboio NVARCHAR2(20) NOT NULL
 );
 
 
@@ -101,7 +102,8 @@ CREATE TABLE Pessoas(
 	idPessoa NUMBER PRIMARY KEY,
 	nome NVARCHAR2(20) NOT NULL,
 	morada NVARCHAR2(20) NOT NULL,
-	idade NUMBER NOT NULL
+	idade NUMBER NOT NULL,
+	tipoPessoa NVARCHAR2(20) NOT NULL
 );
 
 CREATE TABLE Classe(

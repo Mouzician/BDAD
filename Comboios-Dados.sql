@@ -21,12 +21,12 @@ INSERT INTO Linha (nome, duracao, distancia)
 
 -- Inserts na tabela Comboio
 
-INSERT INTO Comboio (modelo, combustivel, velocidade, peso) 
-        VALUES ('CP-9000', 'Diesel-hidrostatico', 95, 15000);
-INSERT INTO Comboio (modelo, combustivel, velocidade, peso) 
-        VALUES ('MZ41P', 'Vapor', 110, 18000);
-INSERT INTO Comboio (modelo, combustivel, velocidade, peso)
-        VALUES ('FAMAS', 'Gas turbina-eletrico', 105, 20000);
+INSERT INTO Comboio (modelo, combustivel, velocidade, peso, tipoComboio) 
+        VALUES ('CP-9000', 'Diesel-hidrostatico', 95, 15000, 'Mercadoria');
+INSERT INTO Comboio (modelo, combustivel, velocidade, peso, tipoComboio) 
+        VALUES ('MZ41P', 'Vapor', 110, 18000, 'Mercadoria');
+INSERT INTO Comboio (modelo, combustivel, velocidade, peso, tipoComboio)
+        VALUES ('FAMAS', 'Gas turbina-eletrico', 105, 20000, 'Passageiros');
 
 -- Inserts na tabela ComboioMercadoria
 
@@ -120,12 +120,12 @@ INSERT INTO Paragens (ordem, idEstacao)
         
 -- Inserts na tabela Pessoas
 
-INSERT INTO Pessoas (idPessoa, nome, morada, idade)
-        VALUES (1, 'Carolina Filipa da Silva Torres e Corte-Real', 'Porto', 25);
-INSERT INTO Pessoas (idPessoa, nome, morada, idade)
-        VALUES (2, 'Maria Gertrudes Gomes Teixeira', 'Paredes', 67);
-INSERT INTO Pessoas (idPessoa, nome, morada, idade)
-        VALUES (3, 'Julio Paulo da Sousa Ferreira', 'Rua D. Manuel III, 45', 54);
+INSERT INTO Pessoas (idPessoa, nome, morada, idade, tipoPessoa)
+        VALUES (1, 'Carolina Filipa da Silva Torres e Corte-Real', 'Porto', 25, 'Cliente');
+INSERT INTO Pessoas (idPessoa, nome, morada, idade, tipoPessoa)
+        VALUES (2, 'Maria Gertrudes Gomes Teixeira', 'Paredes', 67, 'Funcionario');
+INSERT INTO Pessoas (idPessoa, nome, morada, idade, tipoPessoa)
+        VALUES (3, 'Julio Paulo da Sousa Ferreira', 'Rua D. Manuel III, 45', 54, 'Cliente');
 
 -- Inserts na tabela Classe
 
