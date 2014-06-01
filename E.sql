@@ -154,8 +154,12 @@ CREATE TABLE Contrato(
 	PRIMARY KEY (idFuncionarios, idEspecialidade)
 );
 
+DROP TRIGGER IF EXISTS CALCULO_CUSTO;
+DROP TRIGGER IF EXISTS SUBSIDIO_REFEICAO;
+DROP TRIGGER IF EXISTS DELETE_DESVINCULADOS;
+
 --Trigger calcula o dado custo da tabela aluguer automaticamente, atraves dos dados carga, volume e escalao das tabelas empresa e aluguer
-CREATE TRIGGER CALCULOCUSTO
+CREATE TRIGGER CALCULO_CUSTO
 AFTER INSERT
 ON Aluguer
 FOR EACH ROW
@@ -166,7 +170,7 @@ custo = ((SELECT escalao FROM Empresa WHERE idEmpresa = New.idEmpresa) * (New.ca
 END;
 
 --Adiciona o subsidio de refeicao a funcionarios que nao trabalhem na sua area de residencia
-CREATE TRIGGER SUBSIDIOREFEICAO
+CREATE TRIGGER SUBSIDIO_REFEICAO
 AFTER INSERT
 ON Contrato
 FOR EACH ROW
@@ -174,4 +178,14 @@ BEGIN
 UPDATE Contrato SET
 remuneracao = remuneracao + 100
 WHERE((SELECT morada FROM Funcionarios, Pessoas WHERE idFuncionarios = New.idFuncionarios AND idFuncionarios = idPessoa) != (SELECT area FROM Funcionarios WHERE idFuncionarios = New.idFuncionarios));
+END;
+
+--Apaga registos da tabela Aluguer quando a empresa que os efectuou se desvincula
+CREATE TRIGGER DELETE_DESVINCULADOS 
+AFTER DELETE 
+ON Empresa
+FOR EACH ROW
+BEGIN
+DELETE FROM Aluguer
+    WHERE Empresa.idEmpresa = Aluguer.idEmpresa;
 END;
