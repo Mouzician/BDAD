@@ -2,20 +2,20 @@
 .print 'Nome das empresas sem nenhum aluguer ativo';
 SELECT nome FROM Empresa
 WHERE idEmpresa NOT IN
-(SELECT idEmpresa FROM Aluguer);
+(SELECT idEmpresa FROM Aluguer);---DONE---
 
 .print '                                                                                                                               '
 
 --2 ->Qual o número de alugueres de cada empresa?
 .print 'Numero de alugueres de cada empresa';
 SELECT idEmpresa, COUNT(*) FROM Aluguer
-GROUP BY idEmpresa;
+GROUP BY idEmpresa;---DONE---
 
 .print '                                                                                                                               '
 
 --3 ->Qual a média de duração, da distancia, a distancia total e o máximo e minimo da duração e da distancia das linhas da base de dados?
 .print 'Linhas--Media duracao-Media distancia-Distancia total-Distancia maxima-Distancia minima-Duracao maxima-Duracao minima';
-SELECT AVG(duracao), AVG(distancia), SUM(distancia), MAX(distancia), MIN(distancia), MAX(duracao), MIN(duracao) FROM Linha;
+SELECT AVG(duracao), AVG(distancia), SUM(distancia), MAX(distancia), MIN(distancia), MAX(duracao), MIN(duracao) FROM Linha;---DONE---
 
 .print '                                                                                                                               '
 
@@ -24,7 +24,7 @@ SELECT AVG(duracao), AVG(distancia), SUM(distancia), MAX(distancia), MIN(distanc
 SELECT TipoDeServico.nome, ComboioPassageiros.idComboioPassageiros
 FROM TipoDeServico, ComboioPassageiros
 WHERE TipoDeServico.idTipoDeServico = ComboioPassageiros.idTipoDeServico
-GROUP BY TipoDeServico.nome;
+GROUP BY TipoDeServico.nome;---DONE---
 
 .print '                                                                                                                               '
 
