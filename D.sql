@@ -97,7 +97,7 @@ INSERT INTO ComboioMercadoriaLinha (idComboioMercadoria, idLinha)
 INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, cargaActual, tipoProdutos)
         VALUES (1, 1, 4500, 3200, 'Madeira');
 INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, cargaActual, tipoProdutos)
-        VALUES (2, 2, 4000, 4000, 'Ferro');
+        VALUES (2, 2, 4000, 3850, 'Ferro');
 INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, cargaActual, tipoProdutos)
         VALUES (3, 3, 3500, 0, 'Metilamina');
 
@@ -105,41 +105,41 @@ INSERT INTO Carruagem (idCarruagem, idComboioMercadoria, capacidade, cargaActual
 -- Inserts na tabela Empresa
 
 INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, escalao, nome)
-        VALUES (1, 23145, 'Metilamina', 7, 'GreyMatter');
+        VALUES (1, 23145, 'Metilamina', 1, 'GreyMatter');
 INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, escalao, nome)
         VALUES (2, 4000, 'Madeira', 4, 'GreenPeace');
 INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, escalao, nome)
-        VALUES (3, 3500, 'Ferro', 6, 'Microsoft');
+        VALUES (3, 3500, 'Ferro', 3, 'Microsoft');
 INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, escalao, nome)
         VALUES (4, 348, 'Vidro', 1, 'GNB');
 INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, escalao, nome)
-        VALUES (5, 1123, 'Betao', 5, 'SkyForge');
+        VALUES (5, 1123, 'Ferro', 5, 'SkyForge');
 INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, escalao, nome)
         VALUES (6, 9321, 'Pedra', 2, 'Taccahe');
 INSERT INTO Empresa (idEmpresa, nrContrato, tipoMercadorias, escalao, nome)
-        VALUES (7, 9321, 'Areia', 3, 'CarGlass');
+        VALUES (7, 9321, 'Areia', 2, 'CarGlass');
 
 
 -- Inserts na tabela Aluguer
 
 INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, volume, custo, data)--
-        VALUES (1, 1, 35, 66, NULL, '2014-09-03');                      --
+        VALUES (1, 1, 35, 66, NULL, '2014-02-03');                      --
 INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, volume, custo, data)--
         VALUES (1, 2, 40, 71, NULL, '2013-06-12');                      ---- Alugueres da empresa 1
 INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, volume, custo, data)--
         VALUES (1, 3, 50, 96, NULL, '2011-12-27');                      --
 INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, volume, custo, data)--
-        VALUES (1, 4, 55, 87, NULL, '2012-12-21');                      --
+        VALUES (1, 4, 55, 87, NULL, '2014-05-23');                      --
 
 INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, volume, custo, data)--
-        VALUES (2, 5, 90, 111, NULL, '2013-01-19');                     ---- Alugueres da empresa 2
+        VALUES (2, 5, 90, 111, NULL, '2014-05-07');                     ---- Alugueres da empresa 2
 INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, volume, custo, data)--
         VALUES (2, 6, 115, 132, NULL, '2009-01-09');                    --
 
 INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, volume, custo, data)--
         VALUES (5, 7, 148, 270, NULL, '2012-03-25');                    ---- Alugueres da empresa 5
 INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, volume, custo, data)--
-        VALUES (5, 8, 70, 210, NULL, '2007-02-07');                     --
+        VALUES (5, 8, 70, 210, NULL, '2012-12-21');                     --
 
 INSERT INTO Aluguer (idEmpresa, idCarruagem, carga, volume, custo, data)--
         VALUES (6, 9, 355, 90, NULL, '2005-08-13');                     --
@@ -155,6 +155,12 @@ INSERT INTO TipoEstacao (idTipoEstacao, nome, recursos)
         VALUES (1, 'Apeadeiro', 'Venda');
 INSERT INTO TipoEstacao (idTipoEstacao, nome, recursos)
         VALUES (2, 'Estacao Normal', 'Administrativos');
+INSERT INTO TipoEstacao (idTipoEstacao, nome, recursos)
+        VALUES (3, 'Estacao Normal', 'Venda');
+INSERT INTO TipoEstacao (idTipoEstacao, nome, recursos)
+        VALUES (4, 'Apeadeiro', 'Administrativos');
+INSERT INTO TipoEstacao (idTipoEstacao, nome, recursos)
+        VALUES (5, 'Terminal principal', 'Venda');
 
         
 -- Inserts na tabela Estacao
@@ -162,9 +168,15 @@ INSERT INTO TipoEstacao (idTipoEstacao, nome, recursos)
 INSERT INTO Estacao (idTipoEstacao, localidade)
         VALUES (2, 'Nine');
 INSERT INTO Estacao (idTipoEstacao, localidade)
-        VALUES (3, 'Porto Sao Bento');
+        VALUES (5, 'Porto Sao Bento');
 INSERT INTO Estacao (idTipoEstacao, localidade)
-        VALUES (1, 'Terronhas');
+        VALUES (4, 'Terronhas');
+INSERT INTO Estacao (idTipoEstacao, localidade)
+        VALUES (4, 'Alges');
+INSERT INTO Estacao (idTipoEstacao, localidade)
+        VALUES (3, 'Parede');
+INSERT INTO Estacao (idTipoEstacao, localidade)
+        VALUES (1, 'Lavradio');
 
         
 -- Inserts na tabela Paragens

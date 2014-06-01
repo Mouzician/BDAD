@@ -43,7 +43,7 @@ AND ClasseClientes.desconto >(SELECT AVG(Desconto) FROM ClasseClientes);--DONE--
 .print 'Localidades cujas paragens possuem recurso de venda';
 SELECT localidade FROM Estacao, TipoEstacao
 WHERE Estacao.idTipoEstacao = TipoEstacao.idTipoEstacao
-AND recursos LIKE '%Venda';
+AND recursos LIKE '%Venda';--DONE--
 
 .print '                                                                                                                               '
 
@@ -51,7 +51,7 @@ AND recursos LIKE '%Venda';
 .print 'Quais as empresas que realizaram alugueres ha menos de 30 dias';
 SELECT nome FROM Empresa, Aluguer
 WHERE Aluguer.idEmpresa = Empresa.idEmpresa
-AND (Julianday(Date('now')) - Julianday(data)) > 30;
+AND (Julianday(Date('now')) - Julianday(data)) < 30;--DONE--
 
 .print '                                                                                                                               '
 
@@ -59,14 +59,14 @@ AND (Julianday(Date('now')) - Julianday(data)) > 30;
 .print 'Lista de pares de empresas que vendem o mesmo tipo de produtos e pertencem a escaloes diferentes';
 SELECT p.nome, q.nome 
 FROM Empresa p, Empresa q 
-WHERE p.idEmpresa != q.idEmpresa AND p.escalao != q.escalao AND p.tipoMercadorias = q.tipoMercadorias; 
+WHERE p.idEmpresa != q.idEmpresa AND p.escalao != q.escalao AND p.tipoMercadorias = q.tipoMercadorias;--DONE--
 
 .print '                                                                                                                               '
 
 --9 ->Quantidade livre para transporte de cada um dos diferentes tipos de produtos
 .print 'Quantidade livre para transporte de cada um dos diferentes tipos de produtos';
 SELECT SUM(capacidade - cargaActual), tipoProdutos FROM Carruagem
-GROUP BY tipoProdutos;
+GROUP BY tipoProdutos;--DONE--
 
 .print '                                                                                                                               '
 
@@ -79,7 +79,8 @@ GROUP BY idEmpresa;
 SELECT nome || 'Lda', total
 FROM Fatura, Empresa
 WHERE Fatura.idEmpresa = Empresa.idEmpresa
-GROUP BY nome || 'Lda';
+GROUP BY nome || 'Lda';--DONE--
+
 .print '                                                                                                                               '
 
 --SELECT idCarruagem FROM Carruagem
