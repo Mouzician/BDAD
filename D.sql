@@ -182,9 +182,16 @@ INSERT INTO Paragens (ordem, idEstacao)
 INSERT INTO Pessoas (idPessoa, nome, morada, idade, tipoPessoa)
         VALUES (1, 'Carolina Filipa da Silva Torres e Corte-Real', 'Porto', 25, 'Cliente');
 INSERT INTO Pessoas (idPessoa, nome, morada, idade, tipoPessoa)
-        VALUES (2, 'Maria Gertrudes Gomes Teixeira', 'Paredes', 67, 'Funcionario');
+        VALUES (2, 'Maria Gertrudes Gomes Teixeira', 'Paredes', 63, 'Funcionario');
 INSERT INTO Pessoas (idPessoa, nome, morada, idade, tipoPessoa)
-        VALUES (3, 'Julio Paulo da Sousa Ferreira', 'Rua D. Manuel III, 45', 54, 'Cliente');
+        VALUES (3, 'Julio Paulo da Sousa Ferreira', 'Amadora', 54, 'Funcionario');
+INSERT INTO Pessoas (idPessoa, nome, morada, idade, tipoPessoa)
+        VALUES (4, 'Alberto Maria Carneiro Sotto-Mayor Miranda', 'Torres Vedras', 45, 'Cliente');
+INSERT INTO Pessoas (idPessoa, nome, morada, idade, tipoPessoa)
+        VALUES (5, 'Artur Daniel Magalhaes Castro', 'Coimbra', 34, 'Cliente');
+INSERT INTO Pessoas (idPessoa, nome, morada, idade, tipoPessoa)
+        VALUES (6, 'Renata Dias Pinto', 'Portalegre', 22, 'Funcionario');
+
 
 
 -- Inserts na tabela Classe
@@ -202,9 +209,13 @@ INSERT INTO Classe (idClasse, nome)
 INSERT INTO Clientes (idClientes, tipoContrato, profissao)
         VALUES (1, 'Estudante Sub-23', 'Estudante');
 INSERT INTO Clientes (idClientes, tipoContrato, profissao)
-        VALUES (2, 'Passe Social', 'Reformado');
+        VALUES (2, 'Reformado MQP', 'Reformado');
 INSERT INTO Clientes (idClientes, tipoContrato, profissao)
         VALUES (3, 'Passe Mensal', 'Sem profissao');
+INSERT INTO Clientes (idClientes, tipoContrato, profissao)
+        VALUES (4, 'Passe Combinado', 'Professor');
+INSERT INTO Clientes (idClientes, tipoContrato, profissao)
+        VALUES (5, 'Passe Social', 'Desempregado');
 
         
 -- Inserts na tabela ClasseClientes
@@ -212,9 +223,17 @@ INSERT INTO Clientes (idClientes, tipoContrato, profissao)
 INSERT INTO ClasseClientes (idClasse, idClientes, desconto)
         VALUES (2, 3, 100);
 INSERT INTO ClasseClientes (idClasse, idClientes, desconto)
-        VALUES (3, 1, 30);
+        VALUES (3, 5, 60);
 INSERT INTO ClasseClientes (idClasse, idClientes, desconto)
         VALUES (1, 2, 50);
+INSERT INTO ClasseClientes (idClasse, idClientes, desconto)
+        VALUES (2, 4, 0);
+INSERT INTO ClasseClientes (idClasse, idClientes, desconto)
+        VALUES (1, 3, 30);
+INSERT INTO ClasseClientes (idClasse, idClientes, desconto)
+        VALUES (3, 4, 80);
+INSERT INTO ClasseClientes (idClasse, idClientes, desconto)
+        VALUES (2, 1, 20);
 
 
 -- Inserts na tabela Horario
@@ -235,6 +254,8 @@ INSERT INTO Especialidade (idEspecialidade, nome)
         VALUES (2, 'Operador de revisao e venda');
 INSERT INTO Especialidade (idEspecialidade, nome)
         VALUES (3, 'Assistente Comercial');
+INSERT INTO Especialidade (idEspecialidade, nome)
+        VALUES (4, 'Promotor de assistencia fiscal');
 
         
 -- Inserts na tabela Funcionarios

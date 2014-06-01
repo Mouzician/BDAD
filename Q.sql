@@ -34,7 +34,8 @@ SELECT nome
 FROM Pessoas, Clientes, ClasseClientes
 WHERE Pessoas.idPessoa = Clientes.idClientes 
 AND Clientes.idClientes = ClasseClientes.idClientes
-AND ClasseClientes.desconto >(SELECT AVG(Desconto) FROM ClasseClientes);
+AND Pessoas.tipoPessoa = 'Cliente'
+AND ClasseClientes.desconto >(SELECT AVG(Desconto) FROM ClasseClientes);--DONE--
 
 .print '                                                                                                                               '
 
